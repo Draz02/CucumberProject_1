@@ -5,17 +5,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
-    public static String read(String key){
+    public static String read(String key) {
         return read(key, Constants.CONFIG_FILE_PATH);
     }
 
-    public static String read (String key, String path){
+    public static String read(String key, String path) {
         Properties properties = new Properties();
-        try (FileInputStream fis = new FileInputStream(path))
-        {
+        try (FileInputStream fis = new FileInputStream(path)) {
             properties.load(fis);
-        }
-        catch (IOException ioException) {
+        } catch (IOException ioException) {
             ioException.printStackTrace();
         }
         return properties.getProperty(key);

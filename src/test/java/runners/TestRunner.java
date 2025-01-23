@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
         dryRun = true,
 
-        plugin = {"pretty", "html:target/cucumber.html","json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json"},
 
         tags = ""  // ADD the @
 

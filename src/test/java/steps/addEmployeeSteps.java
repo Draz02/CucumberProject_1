@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AddEmployeePage;
 import utils.CommonMethods;
 import utils.excelReader;
+
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
@@ -24,9 +25,9 @@ public class addEmployeeSteps extends CommonMethods {
 
     @When("user enters first name and last name")
     public void user_enters_first_name_and_last_name() throws IOException {
-        List<Map<String,String>> employeeNames = excelReader.read();
+        List<Map<String, String>> employeeNames = excelReader.read();
 
-        for (Map<String,String> employees: employeeNames) {
+        for (Map<String, String> employees : employeeNames) {
             addEmployeePage.firstname.sendKeys(employees.get("firstName"));
             addEmployeePage.lastname.sendKeys(employees.get("lastName"));
 
@@ -38,9 +39,9 @@ public class addEmployeeSteps extends CommonMethods {
 
     @When("user enters first name, last name, and employee ID")
     public void user_enters_first_name_last_name_and_employee_id() throws IOException {
-        List<Map<String,String>> newEmployees = excelReader.read();
+        List<Map<String, String>> newEmployees = excelReader.read();
 
-        for (Map<String,String> employee: newEmployees) {
+        for (Map<String, String> employee : newEmployees) {
             addEmployeePage.employeeId.clear();
 
             addEmployeePage.firstname.sendKeys(employee.get("firstName"));
@@ -66,13 +67,11 @@ public class addEmployeeSteps extends CommonMethods {
 
         // Check first name validation
         WebElement firstNameError = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//span[@for='firstName' and @class='validation-error']")
-        ));
+                By.xpath("//span[@for='firstName' and @class='validation-error']")));
 
         // Check last name validation
         WebElement lastNameError = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//span[@for='lastName' and @class='validation-error']")
-        ));
+                By.xpath("//span[@for='lastName' and @class='validation-error']")));
 
         if (firstNameError.isDisplayed() && lastNameError.isDisplayed())
             System.out.println("Validation errors displayed successfully");

@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import utils.CommonMethods;
 import utils.ConfigReader;
+
 import java.time.Duration;
 
 public class LoginSteps extends CommonMethods {
@@ -52,19 +53,20 @@ public class LoginSteps extends CommonMethods {
 
     @When("user enters invalid login and password information")
     public void user_enters_invalid_login_and_password_information() {
-        sendText("",loginPage.username);
-        sendText("admin",loginPage.username);
-        sendText("",loginPage.password);
-        sendText("Hum@",loginPage.password);
+        sendText("", loginPage.username);
+        sendText("admin", loginPage.username);
+        sendText("", loginPage.password);
+        sendText("Hum@", loginPage.password);
 
 
     }
+
     @Then("user is not able to see dashboard page")
     public void user_is_not_able_to_see_dashboard_page() {
         WebElement errorMsg = driver.findElement(By.id("spanMessage"));
         String errorMessage = errorMsg.getText();
 
-        if (errorMessage.equals("Username cannot be empty")){
+        if (errorMessage.equals("Username cannot be empty")) {
             System.out.println("Username cannot be empty.");
         } else if (errorMessage.equals("Password is Empty")) {
             System.out.println("Password is empty.");

@@ -8,7 +8,7 @@ public class PageInitializer {
     public static LoginPage loginPage;
     public static AddEmployeePage addEmployeePage;
 
-    public static void initializePage(){
+    public static void initializePage() {
         loginPage = new LoginPage();
         addEmployeePage = new AddEmployeePage();
     }
